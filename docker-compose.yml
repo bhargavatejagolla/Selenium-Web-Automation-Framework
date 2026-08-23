@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:./dev.db
+      - JWT_SECRET=super-secret-key-for-testing
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - test-network
+
+  automation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      app:
+        condition: service_healthy
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - test-network
+    volumes:
+      - ./reports:/automation/reports
+      - ./screenshots:/automation/screenshots
+      - ./logs:/automation/logs
+
+networks:
+  test-network:
+    driver: bridge

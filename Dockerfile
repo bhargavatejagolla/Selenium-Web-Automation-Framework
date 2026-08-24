@@ -26,4 +26,4 @@ COPY pytest.ini .
 RUN mkdir -p reports screenshots logs
 
 # Entrypoint script: wait for app to be healthy, then run tests
-ENTRYPOINT ["sh", "-c", "while ! curl -s http://webapp:3000 > /dev/null; do echo '⏳ Waiting for Next.js app...'; sleep 2; done; echo '✅ App is ready! Running Selenium tests...'; pytest --browser=chrome --headless --app-url=http://webapp:3000 -v --html=reports/report_docker.html --self-contained-html"]
+ENTRYPOINT ["sh", "-c", "while ! curl -s http://webapp:3000 > /dev/null; do echo '⏳ Waiting for Next.js app...'; sleep 2; done; echo '✅ App is ready! Running Selenium tests...'; pytest --browser=chrome --headless --app-url=http://webapp:3000 -v --html=reports/report_docker.html --self-contained-html --alluredir=reports/allure-results"]

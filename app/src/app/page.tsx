@@ -5,31 +5,29 @@ import WebThreads from '@/components/ui/WebThreads';
 export default function Home() {
   return (
     <div className="min-h-screen mesh-bg flex flex-col items-center justify-center p-4 overflow-hidden relative">
-      <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-        <WebThreads
-          color1="#5227FF"
-          color2="#FF9FFC"
-          color3="#FFFFFF"
-          speed={0.2}
-          threadCount={6}
-          frequency={5}
-          spread={0.18}
-          taper={1}
-          position={0.5}
-          fanMode="center"
-          glow={0.02}
-          falloff={0.6}
-          thickness={1.1}
-          brightness={0.6}
-          opacity={1}
-          mirror
-          shimmer={false}
-          grain
-          grainIntensity={0.05}
-          mouseInteraction
-          mouseStrength={0.3}
-        />
-      </div>
+      <WebThreads
+        color1="#5227FF"
+        color2="#FF9FFC"
+        color3="#FFFFFF"
+        speed={0.2}
+        threadCount={6}
+        frequency={5}
+        spread={0.18}
+        taper={1}
+        position={0.5}
+        fanMode="center"
+        glow={0.02}
+        falloff={0.6}
+        thickness={1.1}
+        brightness={0.6}
+        opacity={1}
+        mirror
+        shimmer={false}
+        grain
+        grainIntensity={0.05}
+        mouseInteraction
+        mouseStrength={0.3}
+      />
 
       <main className="z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center space-y-12">
         

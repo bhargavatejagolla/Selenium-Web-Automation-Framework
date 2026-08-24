@@ -41,31 +41,29 @@ export default function Login() {
 
   return (
     <div className="min-h-screen mesh-bg flex flex-col items-center justify-center p-4 overflow-hidden relative">
-      <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-        <Topography
-          lowColor="#5227FF"
-          midColor="#FF9FFC"
-          highColor="#FFFFFF"
-          speed={0.35}
-          morphAmount={3}
-          morphSpeed={0.05}
-          bands={2}
-          thickness={0.01}
-          scale={2}
-          pixelSize={1}
-          glow={0.5}
-          colorMode="elevation"
-          contrast={3}
-          brightness={1}
-          fillBands={false}
-          opacity={1}
-          grain
-          grainIntensity={0.05}
-          mouseInteraction
-          mouseRadius={0.3}
-          mouseStrength={0.4}
-        />
-      </div>
+      <Topography
+        lowColor="#5227FF"
+        midColor="#FF9FFC"
+        highColor="#FFFFFF"
+        speed={0.35}
+        morphAmount={3}
+        morphSpeed={0.05}
+        bands={2}
+        thickness={0.01}
+        scale={2}
+        pixelSize={1}
+        glow={0.5}
+        colorMode="elevation"
+        contrast={3}
+        brightness={1}
+        fillBands={false}
+        opacity={1}
+        grain
+        grainIntensity={0.05}
+        mouseInteraction
+        mouseRadius={0.3}
+        mouseStrength={0.4}
+      />
       
       <Link href="/" className="relative z-10 absolute top-8 left-8 text-zinc-400 hover:text-white transition-colors flex items-center">
         &larr; Back to Home

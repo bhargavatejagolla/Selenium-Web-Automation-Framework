@@ -1,5 +1,5 @@
 services:
-  app:
+  webapp:
     build:
       context: ./app
       dockerfile: Dockerfile
@@ -23,7 +23,7 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      app:
+      webapp:
         condition: service_healthy
     environment:
       - PYTHONUNBUFFERED=1

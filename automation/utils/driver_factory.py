@@ -28,6 +28,9 @@ def get_driver(browser_name: str = "chrome", headless: bool = False):
         options.add_argument("--no-sandbox")
         options.add_argument("--window-size=1920,1080")
         options.add_argument("--disable-search-engine-choice-screen")
+        options.add_argument("--ignore-certificate-errors")
+        options.add_argument("--allow-insecure-localhost")
+        options.add_argument("--disable-web-security")
         driver = webdriver.Chrome(options=options)
         
     elif browser_name == "firefox":

@@ -30,7 +30,7 @@ export async function setSession(user: any) {
   cookies().set("session", session, {
     expires,
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: false, // Fix: Allow cookies over HTTP for Selenium tests (since domain is 'webapp', not localhost)
     sameSite: "lax",
     path: "/",
   });
@@ -46,7 +46,7 @@ export async function clearSession() {
   cookies().set("session", "", {
     expires: new Date(0),
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: false, // Fix: Allow cookies over HTTP for Selenium tests
     sameSite: "lax",
     path: "/",
   });

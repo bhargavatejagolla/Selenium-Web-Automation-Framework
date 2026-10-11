@@ -1,6 +1,7 @@
 import pytest
 from automation.utils.logger import setup_logger
 from automation.utils.data_generator import fake
+from automation.utils.screenshot import take_screenshot
 
 logger = setup_logger("TestLogin")
 
@@ -34,10 +35,12 @@ def test_dynamic_login(scenario, real_test_user, login_page, goto_login, driver)
 
     if scenario["expected"] == "success":
         assert login_page.is_dashboard_displayed(), "Expected successful login to dashboard."
-        logger.info(f"✅ {scenario['test_id']} passed: Login successful.")
+        take_screenshot(driver, f"{scenario['test_id']}_SUCCESS")
+        logger.info(f"✅ {scenario['test_id']} passed: Login successful. Screenshot saved.")
     else:
         assert login_page.is_login_error_displayed(), "Expected an error message but none appeared."
+        take_screenshot(driver, f"{scenario['test_id']}_ERROR_SHOWN")
         error_text = login_page.get_error_message()
         assert scenario["expected"].lower() in error_text.lower(), \
             f"Expected error '{scenario['expected']}' but got '{error_text}'"
-        logger.info(f"✅ {scenario['test_id']} passed: Correct error displayed.")
+        logger.info(f"✅ {scenario['test_id']} passed: Correct error displayed. Screenshot saved.")

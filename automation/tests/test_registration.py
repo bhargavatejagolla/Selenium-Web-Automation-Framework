@@ -1,6 +1,7 @@
 import pytest
 from automation.utils.data_generator import get_registration_scenarios
 from automation.utils.logger import setup_logger
+from automation.utils.screenshot import take_screenshot
 
 logger = setup_logger("TestRegistration")
 
@@ -21,10 +22,12 @@ def test_dynamic_registration(data, register_page, goto_register, driver):
 
     if data["expected"] == "success":
         assert register_page.is_registration_successful(), "Expected successful registration redirect to login."
-        logger.info(f"✅ {data['test_id']} passed: Registration successful.")
+        take_screenshot(driver, f"{data['test_id']}_SUCCESS")
+        logger.info(f"✅ {data['test_id']} passed: Registration successful. Screenshot saved.")
     else:
         assert register_page.is_registration_error_displayed(), "Expected an error message but none appeared."
+        take_screenshot(driver, f"{data['test_id']}_ERROR_SHOWN")
         error_text = register_page.get_error_message()
         assert data["expected"].lower() in error_text.lower(), \
             f"Expected error '{data['expected']}' but got '{error_text}'"
-        logger.info(f"✅ {data['test_id']} passed: Correct error displayed.")
+        logger.info(f"✅ {data['test_id']} passed: Correct error displayed. Screenshot saved.")

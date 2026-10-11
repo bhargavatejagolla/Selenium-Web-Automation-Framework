@@ -259,27 +259,3 @@ Selenium-Web-Automation-Framework/
 ```
 
 ---
-
-## 🎓 Interview & Viva Defense Guide
-
-When presenting this project to evaluators, use these exact talking points:
-
-### Q1: "Why did you build your own web application instead of testing an external site?"
-> *"Testing live third-party sites like Google or Amazon introduces unpredictable variables such as CAPTCHAs, IP bans, network latency, and sudden DOM redesigns. By building a production-grade Next.js application with a real SQLite database, I established a controlled, repeatable environment where I could test both the client-side UI and the server-side database state."*
-
-### Q2: "What is the Page Object Model (POM) and why is it important?"
-> *"POM is an architectural design pattern that separates test logic from page structure. If a developer changes the Login button's ID from `login-btn` to `submit-btn`, I only have to update a single locator in `login_page.py`. None of the test cases in `test_login.py` need to be touched. This reduces maintenance overhead and eliminates code duplication."*
-
-### Q3: "How did you prevent tests from failing due to duplicate emails?"
-> *"I implemented dynamic persona generation using Python's `uuid` and `Faker` libraries. Every single test run generates a unique email (e.g. `test_a1b2c3@example.com`). This ensures tests are completely idempotent and can run thousands of times in a row without encountering duplicate key constraints in the database."*
-
-### Q4: "How do you ensure tests don't experience flakiness?"
-> *"I avoided arbitrary `time.sleep()` statements. Instead, every interaction inherits from `BasePage` and uses Selenium's `WebDriverWait` to dynamically poll the DOM until the target element is clickable or visible. In addition, I configured Chrome with `--disable-dev-shm-usage` to prevent shared memory exhaustion inside Docker containers."*
-
----
-
-<div align="center">
-
-**Built with engineering excellence for enterprise-grade Quality Assurance.**
-
-</div>

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Lock, Mail, ArrowRight, Loader2, AlertCircle } from "lucide-react";
+import { Lock, Mail, ArrowRight, ArrowLeft, Loader2, AlertCircle } from "lucide-react";
 import Topography from '@/components/ui/Topography';
 
 export default function Login() {
@@ -65,8 +65,13 @@ export default function Login() {
         mouseStrength={0.4}
       />
       
-      <Link href="/" className="relative z-10 absolute top-8 left-8 text-zinc-400 hover:text-white transition-colors flex items-center">
-        &larr; Back to Home
+      <Link
+        href="/"
+        data-testid="back-to-home-btn"
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-zinc-300 hover:text-white bg-black/40 hover:bg-black/70 border border-white/10 rounded-xl backdrop-blur-md transition-all shadow-lg hover:scale-105"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        <span>Back to Home</span>
       </Link>
       
       <div className="relative z-10 w-full max-w-md animate-in fade-in slide-in-from-bottom-8 duration-700">

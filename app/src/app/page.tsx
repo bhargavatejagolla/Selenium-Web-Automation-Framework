@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, ShieldCheck, Zap, Layers } from 'lucide-react';
 import WebThreads from '@/components/ui/WebThreads';
+import ParticleText from '@/components/ui/ParticleText';
 
 export default function Home() {
   return (
@@ -84,6 +85,30 @@ export default function Home() {
               <p className="text-zinc-400 leading-relaxed">{feature.desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* JAI SJP ParticleText Section */}
+        <div className="w-full pt-16 pb-12 animate-in fade-in slide-in-from-bottom-20 duration-1000 delay-500">
+          <div className="w-full rounded-3xl overflow-hidden border border-white/10 glass-panel shadow-2xl relative" style={{ height: 360, background: '#09090f' }}>
+            <ParticleText
+              text="JAI SJP"
+              particleSize={2.2}
+              density={4}
+              color="#f8fafc"
+              highlightColor="#8b5cf6"
+              scatter={190}
+              gatherDuration={1600}
+              stagger={420}
+              pointerRepel={42}
+              repelRadius={120}
+              idleDrift={0.8}
+              trigger="mount"
+              fontSize="clamp(3.5rem, 13vw, 9rem)"
+              fontWeight={800}
+              fontFamily="inherit"
+              glow
+            />
+          </div>
         </div>
 
       </main>

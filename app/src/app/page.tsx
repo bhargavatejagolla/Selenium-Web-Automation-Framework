@@ -5,7 +5,7 @@ import ParticleText from '@/components/ui/ParticleText';
 
 export default function Home() {
   return (
-    <div className="min-h-screen mesh-bg flex flex-col items-center justify-center p-4 overflow-hidden relative">
+    <div className="min-h-screen mesh-bg flex flex-col items-center justify-start p-4 md:p-8 relative">
       <WebThreads
         color1="#5227FF"
         color2="#FF9FFC"
@@ -88,8 +88,8 @@ export default function Home() {
         </div>
 
         {/* JAI SJP ParticleText Section */}
-        <div className="w-full pt-16 pb-12 animate-in fade-in slide-in-from-bottom-20 duration-1000 delay-500">
-          <div className="w-full rounded-3xl overflow-hidden border border-white/10 glass-panel shadow-2xl relative" style={{ height: 360, background: '#09090f' }}>
+        <div className="w-full pt-16 pb-16 animate-in fade-in slide-in-from-bottom-20 duration-1000 delay-500">
+          <div className="w-full rounded-3xl overflow-hidden border border-white/10 glass-panel shadow-2xl relative" style={{ height: 320, background: 'transparent' }}>
             <ParticleText
               text="JAI SJP"
               particleSize={2.2}

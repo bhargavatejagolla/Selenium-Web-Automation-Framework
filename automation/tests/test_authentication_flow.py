@@ -53,14 +53,16 @@ def test_register_login_logout_flow(register_page, login_page, goto_register, dr
     # ----- Step 5: Logout (via Dashboard Page) -----
     from selenium.webdriver.common.by import By
     logout_btn = (By.CSS_SELECTOR, '[data-testid="logout-btn"]')
-    login_page.click(logout_btn)  # We inherit click from BasePage
+    login_page.click(logout_btn)
+    time.sleep(1)
 
-    # Wait for URL to redirect to /login
+    # Navigate back to /dashboard to verify session was cleared (should redirect to /login)
+    driver.get(f"{app_url}/dashboard")
     login_page.wait_for_url_contains("/login")
     
-    # Verify we are on login page by checking the heading text or URL
+    # Verify we are on login page
     current_url = driver.current_url
     assert "/login" in current_url, f"Logout failed, current URL is {current_url}"
     
-    logger.info("✅ Logout successful, redirected to login.")
+    logger.info("✅ Logout successful, session cleared and redirected to login.")
     logger.info("🎉 End-to-End test passed successfully!")

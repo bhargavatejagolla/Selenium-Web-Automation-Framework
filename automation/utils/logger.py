@@ -12,11 +12,17 @@ def setup_logger(name: str = "automation"):
 
     # File handler
     log_file = os.path.join(LOG_DIR, f"automation_{datetime.now().strftime('%Y%m%d')}.log")
-    file_handler = logging.FileHandler(log_file)
+    file_handler = logging.FileHandler(log_file, encoding='utf-8')
     file_handler.setLevel(logging.DEBUG)
 
-    # Console handler
-    console_handler = logging.StreamHandler()
+    # Console handler with UTF-8 support for emojis on Windows
+    import sys
+    if hasattr(sys.stdout, 'reconfigure'):
+        try:
+            sys.stdout.reconfigure(encoding='utf-8')
+        except Exception:
+            pass
+    console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(logging.INFO)
 
     # Formatter
